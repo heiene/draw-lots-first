@@ -1,0 +1,25 @@
+<ion-navbar *navbar>
+    <ion-title>
+        Home
+    </ion-title>
+</ion-navbar>
+
+<ion-content class="home">
+    <ion-card *ngIf="numberOfParticipants" *ngFor="#participant of currentParticipants">
+        <ion-item>
+            <ion-avatar item-left>
+                <img *ngIf="participant.gravatarUrl" src="{{participant.gravatarUrl}}">
+                <div *ngIf="!participant.gravatarUrl" style="background-color: ">TT</div>
+            </ion-avatar>
+            <h2>{{participant.name}}</h2>
+            <p>{{participant.gravatarId}}</p>
+        </ion-item>
+    </ion-card>
+    <button block Outline (click)="goToRegisterNew()">Add Participant</button>
+    <button block Outline dark (click)="calculateWinner()">Calculate Winner</button>
+    <button block Outline dark (click)="calculateWinningOrder()">Calculate Winning Order</button>
+    <button block Outline dark (click)="clearAndStore()">Clear</button>
+    <div *ngIf="currentWinner">
+        {{currentWinner.name}}
+    </div>
+</ion-content>
